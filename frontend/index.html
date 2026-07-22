@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelTruth - AI Image Detector</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+          theme: {
+              extend: {
+                  colors: {
+                      background: "#d4d4d8", /* retro greyish */
+                      surface: "#ffffff",
+                      primary: "#000000", /* black instead of green */
+                      danger: "#dc2626",
+                      border: "#000000"
+                  },
+                  fontFamily: {
+                      mono: ['Space Mono', 'monospace'],
+                  },
+                  backgroundImage: {
+                      'grid-pattern': "linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px)",
+                  },
+                  boxShadow: {
+                      'retro': '4px 4px 0px 0px rgba(0,0,0,1)',
+                      'retro-sm': '2px 2px 0px 0px rgba(0,0,0,1)'
+                  }
+              }
+          }
+      }
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col grid-bg text-black">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
