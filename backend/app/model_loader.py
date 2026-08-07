@@ -18,9 +18,20 @@ def get_model():
     global _model
     if _model is None:
         if MODEL_SOURCE == "local":
+            abs_path = os.path.abspath(MODEL_PATH)
             if not os.path.exists(MODEL_PATH):
-                raise FileNotFoundError(f"Model not found at {MODEL_PATH}")
+                raise FileNotFoundError(f"Model not found at {abs_path}")
+
+            mtime = os.path.getmtime(MODEL_PATH)
+            import datetime
+            mtime_str = datetime.datetime.fromtimestamp(mtime).strftime("%Y-%m-%d %H:%M:%S")
+
+            print(f"[PixelTruth] Loading model from: {abs_path}")
+            print(f"[PixelTruth] Model file last modified: {mtime_str}")
+
             _model = tf.keras.models.load_model(MODEL_PATH)
+            print(f"[PixelTruth] Model loaded successfully.")
+
         elif MODEL_SOURCE == "vertex":
             # Placeholder for Part 2 (GCP) — call a Vertex AI Endpoint instead
             raise NotImplementedError("Vertex AI serving not wired up yet — set MODEL_SOURCE=local for now")

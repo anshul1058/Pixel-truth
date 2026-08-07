@@ -4,53 +4,59 @@ from PIL import Image
 from tqdm import tqdm
 
 IMG_SIZE = (224, 224)
-OUT_DIR = "../data/processed_v3"
+OUT_DIR = "../data/processed_v5"
 
 random.seed(42)
 
-def list_files(folder):
+def list_files_tagged(folder, tag):
     if not os.path.exists(folder):
+        print(f"WARNING: folder not found: {folder}")
         return []
-    return [os.path.join(folder, f) for f in os.listdir(folder)]
+    return [(os.path.join(folder, f), tag) for f in os.listdir(folder)]
 
-def resize_and_save(paths, label, split):
+def resize_and_save(items, label, split):
     out_folder = os.path.join(OUT_DIR, split, label)
     os.makedirs(out_folder, exist_ok=True)
-    for p in tqdm(paths, desc=f"{split}/{label}"):
+    for p, tag in tqdm(items, desc=f"{split}/{label}"):
         try:
             img = Image.open(p).convert("RGB").resize(IMG_SIZE)
-            img.save(os.path.join(out_folder, os.path.basename(p)))
+            new_name = f"{tag}_{os.path.basename(p)}"
+            img.save(os.path.join(out_folder, new_name))
         except Exception as e:
             print(f"Skipped {p}: {e}")
 
-# Real: COCO only
-real_paths = list_files("../data/raw_v2/real")
-random.shuffle(real_paths)
+real_items = list_files_tagged("../data/raw_v2/real", "coco") + \
+             list_files_tagged("../data/raw_genimage/real_pool", "genimgreal")
+random.shuffle(real_items)
 
-# Fake: force EQUAL counts from each generator family, not random pooled sampling
-cifake_paths = list_files("../data/raw/fake")
-diffdb_paths = list_files("../data/raw_v2/fake")
-random.shuffle(cifake_paths)
-random.shuffle(diffdb_paths)
+gan_items = list_files_tagged("../data/raw/fake", "cifake") + \
+            list_files_tagged("../data/raw_genimage/gan_pool", "genimggan")
+sd_items = list_files_tagged("../data/raw_v2/fake", "diffdb") + \
+           list_files_tagged("../data/raw_genimage/sd_pool", "genimgsd")
+mj_items = list_files_tagged("../data/raw_v3/fake_midjourney", "mj") + \
+           list_files_tagged("../data/raw_genimage/mj_pool", "genimgmj")
+random.shuffle(gan_items)
+random.shuffle(sd_items)
+random.shuffle(mj_items)
 
-# Balance: take min(available diffusion count, half of real count) from each source
-per_source_target = len(real_paths) // 2
-n_diffdb = min(per_source_target, len(diffdb_paths))
-n_cifake = min(per_source_target, len(cifake_paths))
+per_source_target = len(real_items) // 3
+n_gan = min(per_source_target, len(gan_items))
+n_sd = min(per_source_target, len(sd_items))
+n_mj = min(per_source_target, len(mj_items))
 
-fake_paths = cifake_paths[:n_cifake] + diffdb_paths[:n_diffdb]
-random.shuffle(fake_paths)
+fake_items = gan_items[:n_gan] + sd_items[:n_sd] + mj_items[:n_mj]
+random.shuffle(fake_items)
 
-# Trim real to match total fake count exactly, keeping classes balanced
-real_paths = real_paths[:len(fake_paths)]
+real_items = real_items[:len(fake_items)]
 
-print(f"Real: {len(real_paths)} | Fake: {len(fake_paths)} (CIFAKE: {n_cifake}, DiffusionDB: {n_diffdb})")
+print(f"Real: {len(real_items)} | Fake: {len(fake_items)} "
+      f"(GAN: {n_gan}, Diffusion/SD: {n_sd}, Midjourney: {n_mj})")
 
-for label, paths in [("real", real_paths), ("fake", fake_paths)]:
-    train, temp = train_test_split(paths, test_size=0.3, random_state=42)
+for label, items in [("real", real_items), ("fake", fake_items)]:
+    train, temp = train_test_split(items, test_size=0.3, random_state=42)
     val, test = train_test_split(temp, test_size=0.5, random_state=42)
     resize_and_save(train, label, "train")
     resize_and_save(val, label, "val")
     resize_and_save(test, label, "test")
 
-print("Combined preprocessing done (v3, source-balanced).")
+print("Combined preprocessing done (v5, collision-safe).")

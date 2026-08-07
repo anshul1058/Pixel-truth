@@ -4,7 +4,7 @@ from tensorflow.keras import layers, models
 
 IMG_SIZE = (224, 224)
 BATCH_SIZE = 32
-DATA_DIR = "../data/processed_v3"
+DATA_DIR = "../data/processed_v5"
 
 train_ds = tf.keras.utils.image_dataset_from_directory(
     f"{DATA_DIR}/train", image_size=IMG_SIZE, batch_size=BATCH_SIZE, label_mode="binary")
@@ -64,5 +64,5 @@ model.summary()
 print("\n=== Stage 2: fine-tuning top layers ===")
 model.fit(train_ds, validation_data=val_ds, epochs=6)
 
-model.save("../models/finetuned_v1.keras")
-print("Model saved to ../models/finetuned_v1.keras")
+model.save("../models/finetuned_v3.keras")
+print("Model saved to ../models/finetuned_v3.keras")
