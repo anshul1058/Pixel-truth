@@ -1,4 +1,4 @@
-# PixelTruth
+<h1 align="center" style="font-family:'Menlo','Consolas','Courier New',monospace; font-weight:800; letter-spacing:.14em; background:linear-gradient(90deg,#0ea5e9,#6366f1,#a855f7); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;">PIXELTRUTH</h1>
 
 Detecting AI-generated images vs. real photographs using deep learning.
 
