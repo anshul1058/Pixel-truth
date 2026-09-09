@@ -1,20 +1,11 @@
-<p align="center">
-  <svg width="600" height="90" viewBox="0 0 600 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="pixelGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#0ea5e9" />
-        <stop offset="50%" stop-color="#6366f1" />
-        <stop offset="100%" stop-color="#a855f7" />
-      </linearGradient>
-    </defs>
-    <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle"
-          fill="url(#pixelGrad)"
-          font-family="'Space Mono', 'Fira Code', 'JetBrains Mono', 'Courier New', monospace"
-          font-size="44" font-weight="900" letter-spacing="8">
-      PIXEL TRUTH
-    </text>
-  </svg>
-</p>
+```text
+ ____  _          _   _____            _   _     
+|  _ \(_)_  _____| | |_   _| __ _   _| |_| |__  
+| |_) | \ \/ / _ \ |   | || '__| | | | __| '_ \ 
+|  __/| |>  <  __/ |   | || |  | |_| | |_| | | |
+|_|   |_/_/\_\___|_|   |_||_|   \__,_|\__|_| |_|
+```` ``` ````
+
 Detecting AI-generated images vs. real photographs using deep learning.
 
 ## Overview
