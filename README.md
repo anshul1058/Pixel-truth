@@ -4,7 +4,7 @@
 | |_) | \ \/ / _ \ |   | || '__| | | | __| '_ \ 
 |  __/| |>  <  __/ |   | || |  | |_| | |_| | | |
 |_|   |_/_/\_\___|_|   |_||_|   \__,_|\__|_| |_|
-```` ``` ````
+```
 
 Detecting AI-generated images vs. real photographs using deep learning.
 
