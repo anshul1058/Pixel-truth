@@ -1,3 +1,51 @@
-backend/venv/
-training/venv/
-training/data/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data & Models (large files)
+data/
+models/*.keras
+models/*.h5
+models/*.pt
+models/*.pth
+models/*.onnx
+models/*.bin
+models/*.safetensors
+*.json
+!backend/app/schemas.py
+!training/requirements.txt
+
+# Training outputs
+training/*.log
+training/outputs/
+training/checkpoints/
+training/wandb/
+
+# HuggingFace cache
+.cache/
+.cache/huggingface/
+
+# Environment variables
+.env
+.env.local

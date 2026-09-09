@@ -1,3 +1,6 @@
+import logging
+logging.getLogger("transformers").setLevel(logging.ERROR)
+
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from app.schemas import PredictionResponse, HealthResponse

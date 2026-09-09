@@ -1,5 +1,10 @@
 fastapi
 uvicorn[standard]
-tensorflow
+torch
+torchvision
+timm
+transformers
+peft
 pillow
 python-multipart
+huggingface_hub
