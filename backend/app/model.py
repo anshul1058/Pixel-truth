@@ -13,6 +13,7 @@ from transformers import AutoProcessor, SiglipVisionModel
 from peft import LoraConfig, get_peft_model
 from torchvision import transforms
 from PIL import Image
+from PIL import ImageOps
 
 
 class LoRALinear(nn.Module):
@@ -166,8 +167,11 @@ class AIImageDetector:
         if image.mode != 'RGB':
             image = image.convert('RGB')
 
+        image = ImageOps.exif_transpose(image)
+
         siglip_inputs = self.siglip_processor(images=image, return_tensors="pt")
-        siglip_pixels = siglip_inputs["pixel_values"].to(self.device)
+        siglip_dtype = next(self.model.siglip.parameters()).dtype
+        siglip_pixels = siglip_inputs["pixel_values"].to(self.device, dtype=siglip_dtype)
         dinov2_pixels = self.dinov2_transform(image).unsqueeze(0).to(self.device)
 
         with autocast('cuda', enabled=self.device.type == 'cuda'):

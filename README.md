@@ -81,8 +81,10 @@ pixel-truth/
 │
 ├── data/                   # Raw and processed datasets (gitignored)
 ├── models/                 # Trained model files (gitignored)
+├── docs/                   # Screenshots and documentation assets
 ├── infra/                  # cloudbuild.yaml (placeholder)
 ├── .gitignore
+├── LICENSE                 # MIT License
 └── README.md
 ```
 
@@ -123,6 +125,10 @@ The frontend runs on `http://localhost:5173` by default.
 - **History Tab**: Persistent scan history stored in localStorage (filename, date, result, confidence).
 - **System Status**: Live green/red "SYS_ONLINE/SYS_OFFLINE" badge polling `/health`.
 - **Footer**: Links to Documentation, Privacy Policy, Terms of Service (modal popups), and GitHub repo.
+
+### Frontend Preview
+
+![PixelTruth Frontend](docs/frontend-preview.png)
 
 ## API Endpoints
 
@@ -215,4 +221,4 @@ Features from both backbones (2048-dim total) are concatenated and passed throug
 
 ## License
 
-MIT License
+This project is licensed under the [MIT License](LICENSE).
