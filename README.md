@@ -1,6 +1,9 @@
-<h1 align="center" style="font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', 'Fira Code', monospace; font-size: 2.4rem; font-weight: 900; letter-spacing: 0.25em; text-transform: uppercase;">
-  ⚡ PIXEL TRUTH ⚡
-</h1>
+```text
+ ____  _          _   _____            _   _     
+|  _ \(_)_  _____| | |_   _| __ _   _| |_| |__  
+| |_) | \ \/ / _ \ |   | || '__| | | | __| '_ \ 
+|  __/| |>  <  __/ |   | || |  | |_| | |_| | | |
+|_|   |_/_/\_\___|_|   |_||_|   \__,_|\__|_| |_|
 Detecting AI-generated images vs. real photographs using deep learning.
 
 ## Overview
