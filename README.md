@@ -1,6 +1,20 @@
-<h1 align="center" style="font-family: system-ui, -apple-system, 'Segoe UI', 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 900; letter-spacing: 0.3em; text-transform: uppercase;">
-  P I X E L · T R U T H
-</h1>
+<p align="center">
+  <svg width="600" height="90" viewBox="0 0 600 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="pixelGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0ea5e9" />
+        <stop offset="50%" stop-color="#6366f1" />
+        <stop offset="100%" stop-color="#a855f7" />
+      </linearGradient>
+    </defs>
+    <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle"
+          fill="url(#pixelGrad)"
+          font-family="'Space Mono', 'Fira Code', 'JetBrains Mono', 'Courier New', monospace"
+          font-size="44" font-weight="900" letter-spacing="8">
+      PIXEL TRUTH
+    </text>
+  </svg>
+</p>
 Detecting AI-generated images vs. real photographs using deep learning.
 
 ## Overview
