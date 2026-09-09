@@ -1,9 +1,6 @@
-```text
- ____  _          _   _____            _   _     
-|  _ \(_)_  _____| | |_   _| __ _   _| |_| |__  
-| |_) | \ \/ / _ \ |   | || '__| | | | __| '_ \ 
-|  __/| |>  <  __/ |   | || |  | |_| | |_| | | |
-|_|   |_/_/\_\___|_|   |_||_|   \__,_|\__|_| |_|
+<h1 align="center" style="font-family: system-ui, -apple-system, 'Segoe UI', 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 900; letter-spacing: 0.3em; text-transform: uppercase;">
+  P I X E L · T R U T H
+</h1>
 Detecting AI-generated images vs. real photographs using deep learning.
 
 ## Overview
