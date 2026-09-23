@@ -103,7 +103,17 @@ git clone https://github.com/anshul1058/Pixel-truth.git
 cd Pixel-truth
 ```
 
-### 2. Set up and run the backend
+### 2. Download models and/or training data
+
+```bash
+python setup.py model     # Download trained model from HuggingFace (~50MB)
+python setup.py data      # Download all training datasets (~7.6GB)
+python setup.py all       # Download both model + data
+```
+
+The model is required to run the backend. Training data is only needed if you want to retrain.
+
+### 3. Set up and run the backend
 
 ```bash
 cd backend
@@ -115,7 +125,7 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 The backend will download model weights from HuggingFace Hub on first run.
 
-### 3. Set up and run the frontend
+### 4. Set up and run the frontend
 
 ```bash
 cd frontend
@@ -125,7 +135,7 @@ npm run dev
 
 The frontend runs on `http://localhost:5173` by default.
 
-### 4. Frontend Features
+### 5. Frontend Features
 
 - **Scanner Tab**: Drag-and-drop or click-to-browse image upload (JPEG/PNG/WEBP, max 10MB). Displays result as REAL/FAKE label with confidence percentage and a visual bar graph.
 - **History Tab**: Persistent scan history stored in localStorage (filename, date, result, confidence).
