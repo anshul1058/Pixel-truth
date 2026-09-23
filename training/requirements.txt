@@ -1,0 +1,11 @@
+datasets
+tqdm
+Pillow
+numpy
+scikit-learn
+tensorflow
+torch
+timm
+transformers
+peft
+google-genai
