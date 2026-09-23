@@ -32,9 +32,7 @@ models/*.pth
 models/*.onnx
 models/*.bin
 models/*.safetensors
-*.json
-!backend/app/schemas.py
-!training/requirements.txt
+models/*.json
 
 # Training outputs
 training/*.log
